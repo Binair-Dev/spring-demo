@@ -1,0 +1,21 @@
+# Configuration pour l'application Spring Boot
+
+# Configuration du serveur web
+server:
+  port: 8080 # Port sur lequel l'application sera exécutée
+
+# Configuration de la base de données (exemple avec PostgreSQL)
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5454/spring-demo # URL de connexion à la base de données
+    username: postgres # Nom d'utilisateur de la base de données
+    password: postgres # Nom d'utilisateur de la base de données
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        format-sql: true
+    hibernate:
+      ddl-auto: create # Méthode de mise à jour automatique de la base de données (update, create, create-drop, none)
+    show-sql: true # Afficher les requêtes SQL exécutées dans la console
