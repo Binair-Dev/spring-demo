@@ -1,14 +1,13 @@
-package be.bnair.springdemo.entities;
+package be.bnair.springdemo.models.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +35,16 @@ public class User {
 
     public List<Commande> getCommandes() {
         return List.copyOf(commandes);
+    }
+
+    public void addCommande(Commande commande) {
+        this.commandes.add(commande);
+    }
+
+    public User(String nom, String prenom, LocalDate date_de_naissance) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.date_de_naissance = date_de_naissance;
+        this.commandes = new ArrayList<Commande>();
     }
 }

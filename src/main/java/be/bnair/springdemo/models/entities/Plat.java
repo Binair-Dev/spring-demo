@@ -1,5 +1,6 @@
-package be.bnair.springdemo.entities;
+package be.bnair.springdemo.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -28,5 +29,15 @@ public class Plat {
 
     public List<Ingredient> getIngredient() {
         return List.copyOf(ingredient);
+    }
+
+    public Plat(String name) {
+        this.name = name;
+        this.ingredient = new ArrayList<Ingredient>();
+    }
+
+    public Plat(String name, List<Ingredient> ingredient) {
+        this.name = name;
+        this.ingredient = ingredient;
     }
 }   

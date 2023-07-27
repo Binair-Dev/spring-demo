@@ -1,8 +1,8 @@
-package be.bnair.springdemo.entities;
+package be.bnair.springdemo.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,7 +29,7 @@ public class Commande {
         name = "commande_plat",
         joinColumns = @JoinColumn(name = "commande_id"),
         inverseJoinColumns = @JoinColumn(name = "plat_id")
-    )    
+    )
     private List<Plat> plats;
 
     @Getter @Setter
@@ -40,5 +38,16 @@ public class Commande {
 
     public List<Plat> getPlats() {
         return List.copyOf(plats);
+    }
+
+    public Commande(User user) {
+        this.user = user;
+        this.plats = new ArrayList<Plat>();
+    }
+
+    public Commande(User user, Plat plat) {
+        this.user = user;
+        this.plats = new ArrayList<Plat>();
+        this.plats.add(plat);
     }
 }

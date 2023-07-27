@@ -1,4 +1,4 @@
-package be.bnair.springdemo.entities;
+package be.bnair.springdemo.models.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,4 +17,9 @@ public class Ingredient {
     private int id;
     private String name;
     private double quantity;
+
+    public Ingredient(String name, double quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
 }

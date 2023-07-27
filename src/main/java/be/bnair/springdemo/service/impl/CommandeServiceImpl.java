@@ -1,7 +1,12 @@
 package be.bnair.springdemo.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import be.bnair.springdemo.models.dto.CommandeDTO;
+import be.bnair.springdemo.models.entities.Commande;
+import be.bnair.springdemo.models.entities.User;
 import be.bnair.springdemo.repository.CommandeRepository;
 import be.bnair.springdemo.service.CommandeService;
 
@@ -11,5 +16,30 @@ public class CommandeServiceImpl implements CommandeService{
 
     public CommandeServiceImpl(CommandeRepository commandeRepository) {
         this.commandeRepository = commandeRepository;
+    }
+
+    @Override
+    public void create(Commande user) {
+        
+    }
+
+    @Override
+    public List<CommandeDTO> getAllByUser(User user) {
+        return commandeRepository.findAll().stream()
+        .filter(command -> command.getUser().getId() == user.getId())
+        .map(cmd -> CommandeDTO.toDTO(cmd))
+        .toList();
+    }
+
+    @Override
+    public List<CommandeDTO> getAll() {
+        return commandeRepository.findAll().stream()
+        .map(cmd -> CommandeDTO.toDTO(cmd))
+        .toList();
+    }
+
+    @Override
+    public void update(Commande form, long id) {
+        
     }
 }
