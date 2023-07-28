@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Plat {
     @Getter @Setter
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Getter @Setter
     private String name;
@@ -40,4 +40,4 @@ public class Plat {
         this.name = name;
         this.ingredient = ingredient;
     }
-}   
+}

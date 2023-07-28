@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import be.bnair.springdemo.models.dto.CommandeDTO;
-import be.bnair.springdemo.models.entities.Commande;
 import be.bnair.springdemo.models.entities.User;
+import be.bnair.springdemo.models.form.CommandeForm;
 import be.bnair.springdemo.repository.CommandeRepository;
 import be.bnair.springdemo.service.CommandeService;
 
@@ -19,8 +19,8 @@ public class CommandeServiceImpl implements CommandeService{
     }
 
     @Override
-    public void create(Commande user) {
-        
+    public void create(CommandeForm user) {
+        //TODO: save commande
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CommandeServiceImpl implements CommandeService{
     }
 
     @Override
-    public void update(Commande form, long id) {
-        
+    public void update(CommandeForm form, long id) {
+        //TODO: update commande
     }
 }

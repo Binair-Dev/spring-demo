@@ -8,13 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-
 @Data
 @NoArgsConstructor
 public class Ingredient {
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String name;
     private double quantity;
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'un utilisateur</title>
+</head>
+<body>
+    <h1>Création d'un utilisateur</h1>
+    <form action="/user/create" method="post" th:object="${form}">
+        <p>
+            <label for="in-nom">Nom:</label>
+            <input type="text" id="in-nom" th:field="*{nom}" required>
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" ></span>
+        </p>
+        <p>
+            <label for="in-prenom">Prénom:</label>
+            <input type="text" id="in-prenom" th:field="*{prenom}" required>
+            <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" ></span>
+        </p>
+        <p>
+            <label for="in-date">Date de naissance:</label>
+            <input type="date" id="in-date" th:field="*{date}" required>
+            <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" ></span>
+        </p>
+        <button type="submit"></button>
+    </form>
+</body>
+</html>

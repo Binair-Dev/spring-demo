@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Modification de l'utilisateur</h1>
+    <form th:action ="@{/user/user-edit/{id} (id=${id}) }" method="POST" th:object="${form}">
+        <div>
+            <label for="in-nom">Nom:</label>
+            <input type="text" th:field="*{nom}" id="in-nom">
+        </div>
+        <div>
+            <label for="in-prenom">Prenom:</label>
+            <input type="text" th:field="*{prenom}" id="in-prenom">
+        </div>
+        <div>
+            <label for="in-date">Date de naissance:</label>
+            <input type="date" th:field="*{date_de_naissance}" id="in-date">
+        </div>
+        <button type="submit">Modifier</button>
+
+
+    </form>
+</body>
+</html>

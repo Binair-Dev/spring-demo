@@ -2,31 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Utilisateurs</title>
+    <title>Ingrédients</title>
 </head>
 <body>
     <main class="container">
-        <h1>Liste des utilisateurs</h1>
+        <h1>Liste des ingrédients</h1>
 
         <table class="table">
             <thead>
             <tr>
                 <td>id</td>
                 <td>nom</td>
-                <td>prenom</td>
-                <td>date de naissance</td>
+                <td>quantitée</td>
                 <td>actions</td>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user : ${list}" th:object="${user}">
+            <tr th:each="ingredient : ${list}" th:object="${ingredient}">
                 <td th:text="*{id}"></td>
-                <td th:text="*{nom}"></td>
-                <td th:text="*{prenom}"></td>
-                <td th:text="*{date_de_naissance}"></td>
+                <td th:text="*{name}"></td>
+                <td th:text="*{quantity}"></td>
 
                 <td>
-                    <a th:href="@{ /user/{id} (id=*{id}) }">details</a>
+                    <a th:href="@{ /ingredient/ingredient/{id} (id=*{id}) }">details</a>
+                </td>
+                <td>
+                    <a th:href="@{ /ingredient/ingredient-edit/{id} (id=*{id}) }">edit</a>
                 </td>
             </tr>
             </tbody>

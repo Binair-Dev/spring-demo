@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Modification du plat</h1>
+    <form th:action ="@{/plat/plat-edit/{id} (id=${id}) }" method="POST" th:object="${form}">
+        <div>
+            <label for="in-nom">Nom:</label>
+            <input type="text" th:field="*{nom}" id="in-nom">
+        </div>
+		<div>
+            <label>Ingrédients: </label>
+            <p th:each="p : ${form.ingredients}" th:object="${p}">
+                <input type="checkbox" th:text="*{name} + ' ' + *{quantity}"  th:checked="*{isChecked}">
+				<span>gr/l/pincée</span>
+            </p>
+        </div>
+        <button type="submit">Modifier</button>
+    </form>
+</body>
+</html>

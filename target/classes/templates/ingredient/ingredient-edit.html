@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Modification de l'ingrédient</h1>
+    <form th:action ="@{/ingredient/ingredient-edit/{id} (id=${id}) }" method="POST" th:object="${form}">
+        <div>
+            <label for="in-nom">Nom:</label>
+            <input type="text" th:field="*{name}" id="in-name">
+        </div>
+        <div>
+            <label for="in-prenom">Quantitée:</label>
+            <input type="text" th:field="*{quantity}" id="in-quantity">
+        </div>
+        <button type="submit">Modifier</button>
+
+
+    </form>
+</body>
+</html>

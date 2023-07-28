@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plats</title>
+</head>
+<body>
+    <main class="container">
+        <h1>Liste des plats</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>nom</td>
+                <td>actions</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="plat : ${list}" th:object="${plat}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{nom}"></td>
+
+                <td>
+                    <a th:href="@{ /plat/plat/{id} (id=*{id}) }">details</a>
+                </td>
+                <td>
+                    <a th:href="@{ /plat/plat-edit/{id} (id=*{id}) }">edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+
+
+</body>
+</html>

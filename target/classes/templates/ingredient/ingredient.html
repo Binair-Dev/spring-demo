@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingrédient</title>
+</head>
+<body>
+    <main class="container">
+        <h1>Ingrédient simple</h1>
+        <p>
+            <label>ID: </label>
+            <span th:text="*{ingredient.id}"></span>
+        </p>
+        <p>
+            <label>Nom: </label>
+            <span th:text="*{ingredient.name}"></span>
+        </p>
+        <p>
+            <label>Prenom: </label>
+            <span th:text="*{ingredient.quantity}"></span>
+        </p>
+    </main>
+</body>
+</html>

@@ -3,11 +3,12 @@ package be.bnair.springdemo.service;
 import java.util.List;
 
 import be.bnair.springdemo.models.dto.PlatDTO;
-import be.bnair.springdemo.models.entities.Plat;
+import be.bnair.springdemo.models.form.PlatForm;
 
 public interface PlatService {
-    void create(Plat plat);
+    void create(PlatForm plat);
     List<PlatDTO> getAll();
-    void update(Plat plat, Long id);
+    PlatDTO getOne(long id);
+    void update(PlatForm plat, Long id);
     void delete(long id);
 }

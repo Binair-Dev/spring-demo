@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 @Builder
 public class IngredientDTO {
-    private int id;
+    private Long id;
     private String name;
     private double quantity;
 
-    public static IngredientDTO toDTO(Ingredient entity){
+    public static IngredientDTO toDTO (Ingredient entity){
         if(entity == null)
             throw  new IllegalArgumentException("Ne peut etre null");
 
@@ -22,3 +22,4 @@ public class IngredientDTO {
                 .build();
     }
 }
+

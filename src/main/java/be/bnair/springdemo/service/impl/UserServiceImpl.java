@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import be.bnair.springdemo.models.dto.UserDTO;
 import be.bnair.springdemo.models.entities.User;
+import be.bnair.springdemo.models.form.UserForm;
 import be.bnair.springdemo.repository.UserRepository;
 import be.bnair.springdemo.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,8 +21,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void create(User user) {
-        
+    public void create(UserForm form) {
+        User user = new User(form.getNom(), form.getPrenom(), form.getDate_de_naissance());
+        userRepository.save(user);
     }
 
     @Override
@@ -41,7 +43,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void update(User form, long id) {
-        
+    public void update(UserForm form, long id) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()) {
+            user.get().setNom(form.getNom());
+            user.get().setPrenom(form.getPrenom());
+            user.get().setDate_de_naissance(form.getDate_de_naissance());
+            userRepository.save(user.get());
+        }
     }
 }
