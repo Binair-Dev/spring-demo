@@ -1,5 +1,6 @@
 package be.bnair.springdemo.models.dto;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ import lombok.Data;
 public class PlatDTO {
     private Long id;
     private String nom;
-    private Set<IngredientDTO> ingredients;
+    private List<IngredientDTO> ingredients;
 
     public static PlatDTO toDTO (Plat entity){
         if(entity == null)
@@ -22,10 +23,14 @@ public class PlatDTO {
                 .id(entity.getId())
                 .nom(entity.getName())
                 .ingredients(entity.getIngredient().stream()
-                        .map(ingredient -> IngredientDTO.toDTO(ingredient))
-                        .collect(Collectors.toSet())
+                        .map(IngredientDTO::toDTO)
+                        .collect(Collectors.toList())
                 )
                 .build();
+    }
+
+    public void addIngredient(IngredientDTO ingredientDTO) {
+        this.ingredients.add(ingredientDTO);
     }
 }
 
