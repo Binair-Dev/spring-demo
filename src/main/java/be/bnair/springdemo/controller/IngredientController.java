@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import be.bnair.springdemo.models.dto.IngredientDTO;
 import be.bnair.springdemo.models.form.IngredientForm;
-import be.bnair.springdemo.models.form.UserForm;
 import be.bnair.springdemo.service.IngredientService;
 
 @Controller
@@ -37,7 +36,7 @@ public class IngredientController {
 
     @GetMapping("ingredient/ingredient-create")
     public String createIngredient(Model model){
-        model.addAttribute("form", new UserForm());
+        model.addAttribute("form", new IngredientForm());
         return "ingredient/ingredient-create";
     }
 

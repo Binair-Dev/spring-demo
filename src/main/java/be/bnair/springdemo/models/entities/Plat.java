@@ -40,4 +40,9 @@ public class Plat {
         this.name = name;
         this.ingredient = ingredient;
     }
+
+    public void addIngredient(Ingredient ingredient) {
+        if(!this.ingredient.contains(ingredient))
+            this.ingredient.add(ingredient);
+    }
 }

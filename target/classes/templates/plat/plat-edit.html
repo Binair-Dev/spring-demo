@@ -15,7 +15,7 @@
             <label>Ingrédients: </label>
             <div th:each="ingredient : ${ingredients}">
                 <input type="checkbox" th:field="*{ingredients}" th:value="${ingredient.id}"
-                       th:checked="${form.ingredients.contains(ingredient.id)}">
+                    th:checked="${form.ingredients.contains(ingredient.id)}">
                 <span th:text="${ingredient.name + ' ' + ingredient.quantity}"></span>
                 <span>gr/l/pincée</span>
             </div>

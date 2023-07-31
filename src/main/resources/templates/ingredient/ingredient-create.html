@@ -7,18 +7,18 @@
 </head>
 <body>
     <h1>Création d'un ingrédient</h1>
-    <form action="/ingredient/create" method="post" th:object="${form}">
+    <form action="/ingredient/ingredient-create" method="post" th:object="${form}">
         <p>
             <label for="in-nom">Nom:</label>
             <input type="text" id="in-name" th:field="*{name}" required>
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
         </p>
         <p>
-            <label for="in-prenom">Quantitée:</label>
+            <label for="in-quantity">Quantitée:</label>
             <input type="number" id="in-quantity" th:field="*{quantity}" required>
             <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" ></span>
         </p>
-        <button type="submit"></button>
+        <button type="submit">Envoyer</button>
     </form>
 </body>
 </html>

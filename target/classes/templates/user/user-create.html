@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Création d'un utilisateur</h1>
-    <form action="/user/create" method="post" th:object="${form}">
+    <form action="/user/user-create" method="post" th:object="${form}">
         <p>
             <label for="in-nom">Nom:</label>
             <input type="text" id="in-nom" th:field="*{nom}" required>
@@ -20,10 +20,10 @@
         </p>
         <p>
             <label for="in-date">Date de naissance:</label>
-            <input type="date" id="in-date" th:field="*{date}" required>
-            <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" ></span>
+            <input type="date" id="in-date" th:field="*{date_de_naissance}" required>
+            <span th:if="${#fields.hasErrors('date_de_naissance')}" th:errors="*{date_de_naissance}" ></span>
         </p>
-        <button type="submit"></button>
+        <button type="submit">Envoyer</button>
     </form>
 </body>
 </html>

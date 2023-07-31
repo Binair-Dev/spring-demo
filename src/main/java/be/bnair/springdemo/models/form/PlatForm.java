@@ -8,4 +8,9 @@ import lombok.Data;
 public class PlatForm {
     private String nom;
     private List<Long> ingredients;
+
+    public void addIngredient(long id) {
+        if(!ingredients.contains(id))
+            ingredients.add(id);
+    }
 }

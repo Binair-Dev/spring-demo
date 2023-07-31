@@ -7,13 +7,21 @@
 </head>
 <body>
     <h1>Création d'un plat</h1>
-    <form action="/plat/create" method="post" th:object="${form}">
-        <p>
+    <form action="/plat/plat-create" method="post">
+        <div>
             <label for="in-nom">Nom:</label>
-            <input type="text" id="in-nom" th:field="*{nom}" required>
-            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" ></span>
-        </p>
-        <button type="submit"></button>
+            <input type="text" id="in-nom" th:field="*{form.nom}" required>
+            <span th:if="${#fields.hasErrors('form.nom')}" th:errors="*{form.nom}" ></span>
+        </div>
+        <div>
+            <label>Ingrédients: </label>
+            <div th:each="ingredient : ${ingredients}">
+                <input type="checkbox" th:field="*{ingredients}" th:value="${ingredient.id}">
+                <span th:text="${ingredient.name + ' ' + ingredient.quantity}"></span>
+                <span>gr/l/pincée</span>
+            </div>
+        </div>
+        <button type="submit">Envoyer</button>
     </form>
 </body>
 </html>
