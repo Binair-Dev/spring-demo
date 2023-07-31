@@ -2,27 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Utilisateurs</title>
+    <title>Utilisateur simple</title>
+    <!-- Chargement des fichiers CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <main class="container">
-        <h1>Utilisateur simple</h1>
-        <p>
-            <label>ID: </label>
-            <span th:text="*{user.id}"></span>
-        </p>
-        <p>
-            <label>Nom: </label>
-            <span th:text="*{user.nom}"></span>
-        </p>
-        <p>
-            <label>Prenom: </label>
-            <span th:text="*{user.prenom}"></span>
-        </p>
-        <p>
-            <label>Date de naissance: </label>
-            <span th:text="*{user.date_de_naissance}"></span>
-        </p>
+        <h1 class="mt-5">Utilisateur simple</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <label class="fw-bold">ID:</label>
+            </div>
+            <div class="col-md-8">
+                <span th:text="${user.id}"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <label class="fw-bold">Nom:</label>
+            </div>
+            <div class="col-md-8">
+                <span th:text="${user.nom}"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <label class="fw-bold">Prénom:</label>
+            </div>
+            <div class="col-md-8">
+                <span th:text="${user.prenom}"></span>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <label class="fw-bold">Date de naissance:</label>
+            </div>
+            <div class="col-md-8">
+                <span th:text="${user.date_de_naissance}"></span>
+            </div>
+        </div>
     </main>
+
+    <!-- Chargement des fichiers JavaScript de Bootstrap (facultatif, mais peut être nécessaire pour certaines fonctionnalités) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

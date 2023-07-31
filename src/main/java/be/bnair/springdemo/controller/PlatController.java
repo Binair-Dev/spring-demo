@@ -2,8 +2,6 @@ package be.bnair.springdemo.controller;
 
 import java.util.ArrayList;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,29 +40,20 @@ public class PlatController {
         return "plat/plat";
     }
 
-    @GetMapping("plat/plat-create")
-    public String createPlat(Model model){
-        model.addAttribute("ingredients", ingredientService.getAll().stream()
-                .map(i -> new IngredientForm(i.getId(), i.getName(), i.getQuantity(), false))
-                .toList());
-        model.addAttribute("form", new PlatForm());
+    @GetMapping("/plat/plat-create")
+    public String createPlatForm(Model model) {
+        model.addAttribute("platForm", new PlatForm());
+        model.addAttribute("ingredients", ingredientService.getAll());
         return "plat/plat-create";
     }
 
-    @PostMapping("plat/plat-create")
-    public String processCreatePlat(@Valid PlatForm form, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+    @PostMapping("/plat/plat-create")
+    public String processCreatePlatForm(@ModelAttribute("platForm") PlatForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "plat/plat-create";
         }
-        else {
-            form.setIngredients(new ArrayList<>());
-
-            for (Long ingredientId : form.getIngredients()) {
-                IngredientDTO ingredient = ingredientService.getOne(ingredientId);
-                form.addIngredient(ingredient.getId());
-            }
-            platService.create(form);
-        }
+        
+        platService.create(form);
         return "redirect:/plat/plats";
     }
 

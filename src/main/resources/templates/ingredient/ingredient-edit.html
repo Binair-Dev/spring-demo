@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Modification de l'ingrédient</title>
+    <!-- Chargement des fichiers CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Modification de l'ingrédient</h1>
-    <form th:action ="@{/ingredient/ingredient-edit/{id} (id=${id}) }" method="POST" th:object="${form}">
-        <div>
-            <label for="in-nom">Nom:</label>
-            <input type="text" th:field="*{name}" id="in-name">
-        </div>
-        <div>
-            <label for="in-prenom">Quantitée:</label>
-            <input type="text" th:field="*{quantity}" id="in-quantity">
-        </div>
-        <button type="submit">Modifier</button>
+    <main class="container mt-5">
+        <h1>Modification de l'ingrédient</h1>
+        <form th:action="@{/ingredient/ingredient-edit/{id}(id=${id})}" method="POST" th:object="${form}">
+            <div class="form-group">
+                <label for="in-nom">Nom:</label>
+                <input type="text" class="form-control" th:field="*{name}" id="in-nom">
+            </div>
+            <div class="form-group">
+                <label for="in-prenom">Quantité:</label>
+                <input type="text" class="form-control" th:field="*{quantity}" id="in-quantity">
+            </div>
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </main>
 
-
-    </form>
+    <!-- Chargement des fichiers JavaScript de Bootstrap (facultatif, mais peut être nécessaire pour certaines fonctionnalités) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

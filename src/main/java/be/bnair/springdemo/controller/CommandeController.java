@@ -1,22 +1,27 @@
 package be.bnair.springdemo.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import be.bnair.springdemo.models.form.CommandeForm;
 import be.bnair.springdemo.service.CommandeService;
+import be.bnair.springdemo.service.PlatService;
+import be.bnair.springdemo.service.UserService;
 
 @Controller
 public class CommandeController {
     private CommandeService commandeService;
+    private PlatService platService;
+    private UserService userService;
 
-    public CommandeController(CommandeService commandeService) {
+    public CommandeController(CommandeService commandeService, PlatService platService, UserService userService) {
         this.commandeService = commandeService;
+        this.platService = platService;
+        this.userService = userService;
     }
 
     @GetMapping("commande/commandes")
@@ -25,18 +30,22 @@ public class CommandeController {
         return "commande/commandes";
     }
 
-    @GetMapping("commande/commande-create")
-    public String createCommande(Model model){
-        model.addAttribute("form", new CommandeForm());
+    @GetMapping("/commande/commande-create")
+    public String createCommandeForm(Model model) {
+        CommandeForm commandeForm = new CommandeForm();
+        model.addAttribute("commandeForm", commandeForm);
+        model.addAttribute("plats", platService.getAll());
+        model.addAttribute("users", userService.getAll());
         return "commande/commande-create";
     }
 
-    @PostMapping("commande/commande-create")
-    public String processCreateCommande(@Valid CommandeForm form, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+    @PostMapping("/commande/commande-create")
+    public String processCreateCommandeForm(@ModelAttribute("commandeForm") CommandeForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "commande/commande-create";
         }
-        else commandeService.create(form);
+
+        commandeService.create(form);
         return "redirect:/commande/commandes";
     }
 
