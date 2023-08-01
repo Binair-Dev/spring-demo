@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void create(UserForm form) {
-        User user = new User(form.getNom(), form.getPrenom(), form.getDate_de_naissance());
+        User user = new User(form.getNom(), form.getPrenom(), form.getDate_de_naissance(), form.getPassword());
         userRepository.save(user);
     }
 
@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService{
             user.get().setNom(form.getNom());
             user.get().setPrenom(form.getPrenom());
             user.get().setDate_de_naissance(form.getDate_de_naissance());
+            user.get().setPassword(form.getPassword());
             userRepository.save(user.get());
         }
     }

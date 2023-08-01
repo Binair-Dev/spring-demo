@@ -5,9 +5,11 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import be.bnair.springdemo.utils.Validators.PasswordMatches;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +30,11 @@ public class UserForm {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date_de_naissance;
+
+    @Size(min = 3, message = "Password should have at least 3 characters.")
+    @PasswordMatches
+    private String password;
+
+    @Size(min = 3)
+    private String confirmPassword;
 }

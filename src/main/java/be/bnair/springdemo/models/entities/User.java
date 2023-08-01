@@ -33,6 +33,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Commande> commandes; 
 
+    @Getter
+    @Setter
+    private String password;
+
     public List<Commande> getCommandes() {
         return List.copyOf(commandes);
     }
@@ -41,10 +45,11 @@ public class User {
         this.commandes.add(commande);
     }
 
-    public User(String nom, String prenom, LocalDate date_de_naissance) {
+    public User(String nom, String prenom, LocalDate date_de_naissance, String password) {
         this.nom = nom;
         this.prenom = prenom;
         this.date_de_naissance = date_de_naissance;
         this.commandes = new ArrayList<Commande>();
+        this.password = password;
     }
 }

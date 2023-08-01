@@ -31,12 +31,12 @@ public class DataInit implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         //Users
-        User brian = new User("Van Bellinghen", "Brian", LocalDate.of(1997, 9, 8));
-        User julie = new User("Frazelle", "Julie", LocalDate.of(1988, 4, 30));
+        User brian = new User("Van Bellinghen", "Brian", LocalDate.of(1997, 9, 8), "Test1234@");
+        User julie = new User("Frazelle", "Julie", LocalDate.of(1988, 4, 30), "Test1234@");
         userRepository.save(brian);
         userRepository.save(julie);
-        userRepository.save(new User("Hendriks", "Louis", LocalDate.of(2000, 1, 8)));
-        userRepository.save(new User("Hervé", "ChezPlus", LocalDate.of(1987, 6, 14)));
+        userRepository.save(new User("Hendriks", "Louis", LocalDate.of(2000, 1, 8), "Test1234@"));
+        userRepository.save(new User("Hervé", "ChezPlus", LocalDate.of(1987, 6, 14), "Test1234@"));
     
         //Ingredients et Plats
         Ingredient poivre = new Ingredient("Poivre", 1);

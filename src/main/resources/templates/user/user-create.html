@@ -13,17 +13,27 @@
         <form action="/user/user-create" method="post" th:object="${form}">
             <div class="form-group">
                 <label for="in-nom">Nom:</label>
-                <input type="text" id="in-nom" class="form-control" th:field="*{nom}" required>
+                <input type="text" id="in-nom" class="form-control" th:field="*{nom}">
                 <span class="text-danger" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
             </div>
             <div class="form-group">
                 <label for="in-prenom">Prénom:</label>
-                <input type="text" id="in-prenom" class="form-control" th:field="*{prenom}" required>
+                <input type="text" id="in-prenom" class="form-control" th:field="*{prenom}">
                 <span class="text-danger" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
             </div>
             <div class="form-group">
+                <label for="in-password">Mot de passe:</label>
+                <input type="password" id="in-password" class="form-control" th:field="*{password}">
+                <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+            <div class="form-group">
+                <label for="in-confirmPassword">Confirmation de mot de passe:</label>
+                <input type="password" id="in-confirmPassword" class="form-control" th:field="*{confirmPassword}">
+                <span class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+            </div>
+            <div class="form-group">
                 <label for="in-date">Date de naissance:</label>
-                <input type="date" id="in-date" class="form-control" th:field="*{date_de_naissance}" required>
+                <input type="date" id="in-date" class="form-control" th:field="*{date_de_naissance}">
                 <span class="text-danger" th:if="${#fields.hasErrors('date_de_naissance')}" th:errors="*{date_de_naissance}"></span>
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>

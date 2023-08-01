@@ -16,6 +16,7 @@ public class UserDTO {
     private String prenom;
     private LocalDate date_de_naissance;
     private Set<Long> commandes;
+    private String password;
 
     public static UserDTO toDTO(User entity){
         if(entity == null)
@@ -26,6 +27,7 @@ public class UserDTO {
                 .prenom(entity.getPrenom())
                 .nom(entity.getNom())
                 .date_de_naissance(entity.getDate_de_naissance())
+                .password(entity.getPassword())
                 .commandes(entity.getCommandes().stream()
                         .map(commande -> commande.getId())
                         .collect(Collectors.toSet())
