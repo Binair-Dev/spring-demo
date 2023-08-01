@@ -5,7 +5,9 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -15,6 +17,7 @@ import be.bnair.springdemo.service.UserService;
 
 @Controller
 public class UserController {
+
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -41,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("user/user-create")
-    public String processCreateUser(@Valid UserForm form, BindingResult bindingResult) {
+    public String processCreateUser(@ModelAttribute("form") @Valid UserForm form, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "user/user-create";
         }
@@ -64,7 +67,7 @@ public class UserController {
     }
     
     @PostMapping("user/user-edit/{id:[0-9]+}")
-    public String processUpdateUser(@Valid UserForm form, BindingResult bindingResult, @PathVariable long id) {
+    public String processUpdateUser(@Validated UserForm form, BindingResult bindingResult, @PathVariable long id) {
         if(bindingResult.hasErrors()) {
             return "user/user-create";
         }
