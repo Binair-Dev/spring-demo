@@ -7,7 +7,7 @@ server:
 # Configuration de la base de données (exemple avec PostgreSQL)
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring-demo # URL de connexion à la base de données
+    url: jdbc:postgresql://localhost:5432/colloque # URL de connexion à la base de données
     username: postgres # Nom d'utilisateur de la base de données
     password: test1234@ # Nom d'utilisateur de la base de données
     driver-class-name: org.postgresql.Driver
